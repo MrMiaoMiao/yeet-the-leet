@@ -1,0 +1,92 @@
+--
+-- @lc app=leetcode id=1440 lang=mysql
+--
+-- [1440] Evaluate Boolean Expression
+--
+-- https://leetcode.com/problems/evaluate-boolean-expression/description/
+--
+-- database
+-- Medium (71.31%)
+-- Total Accepted:    2.6K
+-- Total Submissions: 3.7K
+-- Testcase Example:  '{"headers":{"Variables":["name","value"],"Expressions":["left_operand","operator","right_operand"]},"rows":{"Variables":[["x",66],["y",77]],"Expressions":[["x",">","y"],["x","<","y"],["x","=","y"],["y",">","x"],["y","<","x"],["x","=","x"]]}}'
+--
+-- Table Variables:
+-- 
+-- 
+-- +---------------+---------+
+-- | Column Name   | Type    |
+-- +---------------+---------+
+-- | name          | varchar |
+-- | value         | int     |
+-- +---------------+---------+
+-- name is the primary key for this table.
+-- This table contains the stored variables and their values.
+-- 
+-- 
+-- 
+-- 
+-- Table Expressions:
+-- 
+-- 
+-- +---------------+---------+
+-- | Column Name   | Type    |
+-- +---------------+---------+
+-- | left_operand  | varchar |
+-- | operator      | enum    |
+-- | right_operand | varchar |
+-- +---------------+---------+
+-- (left_operand, operator, right_operand) is the primary key for this table.
+-- This table contains a boolean expression that should be evaluated.
+-- operator is an enum that takes one of the values ('<', '>', '=')
+-- The values of left_operand and right_operand are guaranteed to be in the
+-- Variables table.
+-- 
+-- 
+-- 
+-- 
+-- Write an SQL query to evaluate the boolean expressions in Expressions
+-- table.
+-- 
+-- Return the result table in any order.
+-- 
+-- The query result format is in the following example.
+-- 
+-- 
+-- Variables table:
+-- +------+-------+
+-- | name | value |
+-- +------+-------+
+-- | x    | 66    |
+-- | y    | 77    |
+-- +------+-------+
+-- 
+-- Expressions table:
+-- +--------------+----------+---------------+
+-- | left_operand | operator | right_operand |
+-- +--------------+----------+---------------+
+-- | x            | >        | y             |
+-- | x            | <        | y             |
+-- | x            | =        | y             |
+-- | y            | >        | x             |
+-- | y            | <        | x             |
+-- | x            | =        | x             |
+-- +--------------+----------+---------------+
+-- 
+-- Result table:
+-- +--------------+----------+---------------+-------+
+-- | left_operand | operator | right_operand | value |
+-- +--------------+----------+---------------+-------+
+-- | x            | >        | y             | false |
+-- | x            | <        | y             | true  |
+-- | x            | =        | y             | false |
+-- | y            | >        | x             | true  |
+-- | y            | <        | x             | false |
+-- | x            | =        | x             | true  |
+-- +--------------+----------+---------------+-------+
+-- As shown, you need find the value of each boolean exprssion in the table
+-- using the variables table.
+-- 
+--
+# Write your MySQL query statement below
+
